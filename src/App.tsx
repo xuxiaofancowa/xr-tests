@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import style from "./App.module.css";
 import { Button, Modal, Tabs, message } from "antd";
 import { Popup } from "antd-mobile";
@@ -25,22 +31,6 @@ function App() {
   }, []);
 
   console.log("---页面高度", document.querySelector(".tabsInfo")?.clientHeight);
-  
-  const setHeight = useCallback(()=>{
-    const tabpane=document.querySelector('.ant-tabs-tabpane')
-    const content = document.querySelector('.ant-tabs-content')
-    if(tabpane){
-      tabpane.setAttribute('style','height:100%')
-      content?.setAttribute('style','height:100%')
-    }else{
-      setTimeout(()=>{
-        setHeight()
-      },50)
-    }
-  },[])
-  useEffect(()=>{
-    setHeight()
-  },[setHeight])
   return (
     <div className={style.app}>
       <Tabs
@@ -62,12 +52,33 @@ function OrderPage() {
   const [count, setCount] = useState(0);
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [height, setHeight] = useState(0);
   //@ts-ignore
   console.log("列表高度", ref.current?.clientHeight);
-
+  const getHieght = useCallback(() => {
+    if (ref.current) {
+      //@ts-ignore
+      const rect = ref.current.getBoundingClientRect();
+      const height = window.innerHeight - rect.top;
+      setHeight(height);
+    } else {
+      setTimeout(() => {
+        getHieght();
+      }, 50);
+    }
+  }, []);
+  useEffect(() => {
+    getHieght();
+  }, [getHieght]);
   return (
     //@ts-ignore
-    <div className={style.page} ref={ref}>
+    <div
+      className={style.page}
+      ref={ref}
+      style={{
+        height: `${height}px`,
+      }}
+    >
       {contextHolder}
       <Modal
         title="Basic Modal"
