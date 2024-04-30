@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import style from "./App.module.css";
 import { Button, Modal, Tabs, message } from "antd";
 import { Popup } from "antd-mobile";
@@ -26,6 +26,21 @@ function App() {
 
   console.log("---页面高度", document.querySelector(".tabsInfo")?.clientHeight);
   
+  const setHeight = useCallback(()=>{
+    const tabpane=document.querySelector('.ant-tabs-tabpane')
+    const content = document.querySelector('.ant-tabs-content')
+    if(tabpane){
+      tabpane.setAttribute('style','height:100%')
+      content?.setAttribute('style','height:100%')
+    }else{
+      setTimeout(()=>{
+        setHeight()
+      },50)
+    }
+  },[])
+  useEffect(()=>{
+    setHeight()
+  },[setHeight])
   return (
     <div className={style.app}>
       <Tabs

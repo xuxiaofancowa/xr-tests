@@ -1,11 +1,11 @@
 .app {
   height: 100vh;
-  :global(.ant-tabs-content) {
+  /* :global(.ant-tabs-content) {
     height: 100%;
   }
   :global(.ant-tabs-tabpane) {
     height: 100%;
-  }
+  } */
 }
 
 .page {
