@@ -1,0 +1,44 @@
+.app {
+  height: 100vh;
+  :global(.ant-tabs-content) {
+    height: 100%;
+  }
+  :global(.ant-tabs-tabpane) {
+    height: 100%;
+  }
+}
+
+.page {
+  padding: 10px 0;
+  height: 100%;
+  background-color: aquamarine;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .header {
+    background-color: blanchedalmond;
+  }
+  .list {
+    flex: 1;
+    text-align: center;
+  }
+  .bottom {
+    z-index: 888;
+    background-color: black;
+    padding: 0 20px;
+    height: 10vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div {
+      height: 100%;
+    }
+    > div:last-child {
+      width: 100px;
+      text-align: center;
+      background-color: blue;
+    }
+  }
+}
