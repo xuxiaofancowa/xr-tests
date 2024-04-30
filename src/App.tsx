@@ -6,8 +6,8 @@ import React, {
   useState,
 } from "react";
 import style from "./App.module.css";
-import { Button, Modal, Tabs, message } from "antd";
-import { Popup } from "antd-mobile";
+import { Button, Divider, Tabs, message } from "antd";
+import { Popup, Modal } from "antd-mobile";
 import VConsole from "vconsole";
 const vConsole = new VConsole();
 function App() {
@@ -82,16 +82,31 @@ function OrderPage() {
       {contextHolder}
       <Modal
         title="Basic Modal"
-        open={open}
-        onOk={() => {
-          setOpen(false);
-        }}
-        onCancel={() => {
-          setOpen(false);
-        }}
-      >
-        数量{count}
-      </Modal>
+        visible={open}
+        content={
+          <div>
+            <div>数量{count}</div>
+            <div>
+              <Button
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                取消
+              </Button>
+              <Button
+                type="primary"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                确定
+              </Button>
+            </div>
+          </div>
+        }
+      />
+
       <div className={style.header}>header</div>
       <div className={style.list}>
         <Button
