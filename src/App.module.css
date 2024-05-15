@@ -1,17 +1,20 @@
 .app {
   height: 100vh;
-  /* :global(.ant-tabs-content) {
+  :global(.ant-tabs-content) {
     height: 100%;
   }
   :global(.ant-tabs-tabpane) {
     height: 100%;
-  } */
+  }
+  :global(.ant-tabs-nav-wrap){
+    background-color: #fff;
+  }
 }
 
 .page {
   padding: 10px 0;
   height: 100%;
-  background-color: aquamarine;
+  background-color: #f8f8f8;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

@@ -109,6 +109,8 @@ function OrderPage() {
 
       <div className={style.header}>header</div>
       <div className={style.list}>
+        <div style={{ backgroundColor: "#fff",width:100 }}>asd</div>
+        <div style={{ width:100 }}>aaaaaaaaaaaa</div>
         <Button
           onClick={() => {
             if (count > 0) {
